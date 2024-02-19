@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import data from "./data/quizes.json";
+import { useState } from "react";
 
 interface Quiz {
   id: number;
@@ -22,23 +23,33 @@ interface Option {
 }
 
 function App() {
+  const [quizes, setQuizes] = useState<Quiz[] | null>(data);
+
+  const searchQuiz = (event: any) => {
+    const filteredQuizes = data.filter((quiz: Quiz) =>
+      quiz.name.toLowerCase().includes(event.target.value.trim().toLowerCase())
+    );
+    setQuizes(filteredQuizes);
+  };
+
   return (
     <>
       <Main>
         <Header>
           <Title>Quiz</Title>
-          <Search placeholder="Search"></Search>
+          <Search placeholder="Search" onChange={searchQuiz}></Search>
         </Header>
         <QuizContainer>
-          {data.map((quiz: Quiz) => {
-            return (
-              <Quiz key={quiz.id}>
-                <QuizImage src={quiz.img}></QuizImage>
-                <QuizText>{quiz.name}</QuizText>
-                <QuizText>{quiz.questions.length} questions</QuizText>
-              </Quiz>
-            );
-          })}
+          {quizes &&
+            quizes.map((quiz: Quiz) => {
+              return (
+                <Quiz key={quiz.id}>
+                  <QuizImage src={quiz.img}></QuizImage>
+                  <QuizText>{quiz.name}</QuizText>
+                  <QuizText>{quiz.questions.length} questions</QuizText>
+                </Quiz>
+              );
+            })}
         </QuizContainer>
       </Main>
     </>
@@ -68,6 +79,7 @@ const Search = styled.input`
   border-radius: 5px;
   border: 0;
   outline: 0;
+  width: 175px;
   :focus {
     outline: none !important;
   }
@@ -76,6 +88,9 @@ const Search = styled.input`
 const QuizContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 const Quiz = styled.div`
@@ -83,10 +98,13 @@ const Quiz = styled.div`
   min-height: 200px;
   background: #fff;
   margin-right: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 8px;
   color: #525252;
+  @media (max-width: 768px) {
+    margin-right: 0;
+  }
 `;
 
 const QuizImage = styled.img`

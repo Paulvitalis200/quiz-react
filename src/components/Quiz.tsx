@@ -1,27 +1,8 @@
 import styled from "styled-components";
-
-interface Quiz {
-  id: number;
-  img: string;
-  name: string;
-  questions: Question[];
-}
-
-interface Question {
-  id: number;
-  text: string;
-  options: Option[];
-}
-
-interface Option {
-  id: number;
-  label: string;
-  text: string;
-  isCorrect: boolean;
-}
+import { QuizInterface } from "../models/quiz";
 
 interface Props {
-  quiz: Quiz;
+  quiz: QuizInterface;
 }
 
 function Quiz({ quiz }: Props) {

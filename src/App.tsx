@@ -2,26 +2,7 @@ import styled from "styled-components";
 import data from "./data/quizes.json";
 import { useState } from "react";
 import Quiz from "./components/Quiz";
-
-interface QuizInterface {
-  id: number;
-  img: string;
-  name: string;
-  questions: Question[];
-}
-
-interface Question {
-  id: number;
-  text: string;
-  options: Option[];
-}
-
-interface Option {
-  id: number;
-  label: string;
-  text: string;
-  isCorrect: boolean;
-}
+import { QuizInterface } from "./models/quiz";
 
 function App() {
   const [quizes, setQuizes] = useState<QuizInterface[] | null>(data);

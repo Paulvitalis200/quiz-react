@@ -102,6 +102,7 @@ const Quiz = styled.div`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 8px;
   color: #525252;
+  padding-bottom: 5px;
   @media (max-width: 768px) {
     margin-right: 0;
   }

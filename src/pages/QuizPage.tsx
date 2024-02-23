@@ -11,12 +11,12 @@ function QuizPage() {
   const { id } = useParams();
 
   const quiz = data.find((quiz: QuizInterface) => quiz.id === parseInt(id!));
-  const [currentQuestion, setCurrentQuestion] = useState(1);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [currentQuestion] = useState(1);
+  // const [correctAnswers, setCorrectAnswers] = useState(0);
 
-  const answerQuestion = (option: OptionInterface) => {
-    console.log("OPTION CLICKED");
-  };
+  // const answerQuestion = (option: OptionInterface) => {
+  //   console.log("OPTION CLICKED");
+  // };
   console.log(quiz);
   if (!quiz) return <>No quiz found with that ID</>;
   return (
@@ -25,7 +25,7 @@ function QuizPage() {
       <Quiz
         questions={quiz.questions}
         currentQuestion={currentQuestion}
-        answerQuestion={answerQuestion}
+        // answerQuestion={answerQuestion}
       />
       {/* <Results /> */}
     </Main>

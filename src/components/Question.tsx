@@ -3,10 +3,10 @@ import { OptionInterface, QuestionInterface } from "../models/quiz";
 
 interface QuestionProps {
   question: QuestionInterface;
-  answerQuestion: (option: OptionInterface) => void;
+  // answerQuestion: (option: OptionInterface) => void;
 }
 
-function Question({ question, answerQuestion }: QuestionProps) {
+function Question({ question }: QuestionProps) {
   console.log("MY QUESTION: ", question);
   // const [question, setQuestion] = useState(question)
   return (

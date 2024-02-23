@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import data from "../data/quizes.json";
-import { OptionInterface, QuizInterface } from "../models/quiz";
+import { QuizInterface } from "../models/quiz";
 import QuizHeader from "../components/QuizHeader";
-import Results from "../components/Results";
+// import Results from "../components/Results";
 import Quiz from "../components/Quiz";
 import styled from "styled-components";
 import { useState } from "react";

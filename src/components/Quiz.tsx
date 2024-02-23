@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { OptionInterface, QuestionInterface } from "../models/quiz";
+import { QuestionInterface } from "../models/quiz";
 import Question from "./Question";
 
 interface QuizProps {

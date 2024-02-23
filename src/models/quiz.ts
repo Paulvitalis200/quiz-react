@@ -2,16 +2,16 @@ export interface QuizInterface {
   id: number;
   img: string;
   name: string;
-  questions: Question[];
+  questions: QuestionInterface[];
 }
 
-interface Question {
+export interface QuestionInterface {
   id: number;
   text: string;
-  options: Option[];
+  options: OptionInterface[];
 }
 
-interface Option {
+export interface OptionInterface {
   id: number;
   label: string;
   text: string;

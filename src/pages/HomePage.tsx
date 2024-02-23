@@ -2,7 +2,7 @@ import { useState } from "react";
 import { QuizInterface } from "../models/quiz";
 import styled from "styled-components";
 import data from "../data/quizes.json";
-import Quiz from "../components/Quiz";
+import QuizCard from "../components/QuizCard";
 
 function HomePage() {
   const [quizes, setQuizes] = useState<QuizInterface[] | null>(data);
@@ -24,7 +24,7 @@ function HomePage() {
         <QuizContainer>
           {quizes &&
             quizes.map((quiz: QuizInterface) => {
-              return <Quiz key={quiz.id} quiz={quiz} />;
+              return <QuizCard key={quiz.id} quiz={quiz} />;
             })}
         </QuizContainer>
       </Main>

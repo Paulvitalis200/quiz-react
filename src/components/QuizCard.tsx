@@ -5,17 +5,17 @@ interface Props {
   quiz: QuizInterface;
 }
 
-function Quiz({ quiz }: Props) {
+function QuizCard({ quiz }: Props) {
   return (
-    <QuizCard>
+    <Card>
       <QuizImage src={quiz.img}></QuizImage>
       <QuizText>{quiz.name}</QuizText>
       <QuizText>{quiz.questions.length} questions</QuizText>
-    </QuizCard>
+    </Card>
   );
 }
 
-const QuizCard = styled.div`
+const Card = styled.div`
   width: 300px;
   min-height: 200px;
   background: #fff;
@@ -44,4 +44,4 @@ const QuizText = styled.p`
     font-weight: 700;
   }
 `;
-export default Quiz;
+export default QuizCard;

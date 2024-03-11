@@ -16,7 +16,6 @@ function QuizCard({ quiz }: Props) {
 }
 
 const Card = styled.div`
-  width: 300px;
   min-height: 200px;
   background: #fff;
   margin-right: 20px;

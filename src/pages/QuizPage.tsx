@@ -6,11 +6,14 @@ import Quiz from "../components/Quiz";
 import styled from "styled-components";
 import { useState } from "react";
 import Results from "../components/Results";
+import QuizProgress from "../components/QuizProgress";
 
 function QuizPage() {
   const { id } = useParams();
 
-  const quiz = data.find((quiz: QuizInterface) => quiz.id === parseInt(id!));
+  const quiz: QuizInterface | undefined = data.find(
+    (quiz: QuizInterface) => quiz.id === parseInt(id!)
+  );
   const [currentQuestion, setCurrentQuestion] = useState<number>(1);
   const [correctAnswers, setCorrectAnswers] = useState<number>(0);
 
@@ -18,17 +21,24 @@ function QuizPage() {
     if (option.isCorrect) {
       setCorrectAnswers(correctAnswers + 1);
     }
-    setCurrentQuestion(currentQuestion + 1);
+    if (quiz) {
+      if (currentQuestion <= quiz.questions.length)
+        setCurrentQuestion(currentQuestion + 1);
+    }
   };
   if (!quiz) return <>No quiz found with that ID</>;
   return (
     <Main>
+      <QuizHeader
+        currentQuestion={currentQuestion}
+        questions={quiz.questions.length}
+      />
+      <QuizProgress
+        currentQuestion={currentQuestion}
+        questions={quiz.questions.length}
+      />
       {currentQuestion <= quiz.questions.length && (
         <>
-          <QuizHeader
-            currentQuestion={currentQuestion}
-            questions={quiz.questions.length}
-          />
           <Quiz
             questions={quiz.questions}
             currentQuestion={currentQuestion}

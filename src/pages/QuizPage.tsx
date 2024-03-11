@@ -11,8 +11,8 @@ function QuizPage() {
   const { id } = useParams();
 
   const quiz = data.find((quiz: QuizInterface) => quiz.id === parseInt(id!));
-  const [currentQuestion, setCurrentQuestion] = useState(1);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState<number>(1);
+  const [correctAnswers, setCorrectAnswers] = useState<number>(0);
 
   const answerQuestion = (option: OptionInterface) => {
     if (option.isCorrect) {

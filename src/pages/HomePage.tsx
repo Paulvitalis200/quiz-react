@@ -3,6 +3,7 @@ import { QuizInterface } from "../models/quiz";
 import styled from "styled-components";
 import data from "../data/quizes.json";
 import QuizCard from "../components/QuizCard";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [quizes, setQuizes] = useState<QuizInterface[] | null>(data);
@@ -24,7 +25,15 @@ function HomePage() {
         <QuizContainer>
           {quizes &&
             quizes.map((quiz: QuizInterface) => {
-              return <QuizCard key={quiz.id} quiz={quiz} />;
+              return (
+                <Link
+                  to={`/quiz/${quiz.id}`}
+                  key={quiz.id}
+                  style={{ textDecoration: "none" }}
+                >
+                  <QuizCard quiz={quiz} />
+                </Link>
+              );
             })}
         </QuizContainer>
       </Main>

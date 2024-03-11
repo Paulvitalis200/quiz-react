@@ -2,13 +2,25 @@ import styled from "styled-components";
 
 interface QuizHeaderProps {
   currentQuestion: number;
+  questions: number;
 }
-function QuizHeader({ currentQuestion }: QuizHeaderProps) {
+function QuizHeader({ currentQuestion, questions }: QuizHeaderProps) {
+  const calculateLength = () => {
+    return ((currentQuestion - 1) / questions) * 100;
+  };
   return (
     <>
-      <HeaderTitle>Question {currentQuestion}/3</HeaderTitle>
+      <HeaderTitle>
+        Question {currentQuestion}/{questions}
+      </HeaderTitle>
       <ProgressSection>
-        <ProgressBar></ProgressBar>
+        <div
+          style={{
+            background: "#ffc06b",
+            height: "50px",
+            width: `${calculateLength()}%`,
+          }}
+        ></div>
       </ProgressSection>
     </>
   );
@@ -22,11 +34,6 @@ const ProgressSection = styled.div`
   width: 300px;
   height: 50px;
   border: 3px solid #ffc06b;
-`;
-const ProgressBar = styled.div`
-  background: #ffc06b;
-  height: 50px;
-  width: 0;
 `;
 
 export default QuizHeader;
